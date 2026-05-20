@@ -11,7 +11,7 @@ readme = "README.md"
 
 [dependencies]
 indexmap = { version = "2.1", features = ["serde"] }
-schemars = { version = "1.0.4", features = ["indexmap2"] }
+schemars = { version = "1.2.1", features = ["indexmap2"] }
 serde = { version = "1.0.144", features = ["derive"] }
 serde_json = "1"
 thiserror = "2.0"
@@ -22,7 +22,7 @@ bytes = { version = "1", optional = true }
 http = { version = "1.0.0", optional = true }
 serde_qs = { version = "1.1.1", optional = true }
 
-axum = { version = "0.8.1", optional = true, default-features = false }
+axum = { version = "0.8.9", optional = true, default-features = false }
 axum-extra = { version = "0.12", optional = true }
 tower-layer = { version = "0.3", optional = true }
 tower-service = { version = "0.3", optional = true }
@@ -36,7 +36,14 @@ scalar = []
 skip_serializing_defaults = []
 serde_qs = ["dep:serde_qs"]
 
-axum = ["dep:axum", "bytes", "http", "dep:tower-layer", "dep:tower-service", "serde_qs?/axum"]
+axum = [
+  "dep:axum",
+  "bytes",
+  "http",
+  "dep:tower-layer",
+  "dep:tower-service",
+  "serde_qs?/axum",
+]
 axum-form = ["axum", "axum/form"]
 axum-json = ["axum", "axum/json"]
 axum-matched-path = ["axum", "axum/matched-path"]
@@ -57,9 +64,9 @@ axum-extra-query = ["axum-extra", "axum-extra/query"]
 axum-extra-json-deserializer = ["axum-extra", "axum-extra/json-deserializer"]
 axum-extra-routing = ["axum-extra", "axum-extra/routing"]
 axum-extra-typed-routing = [
-    "axum-extra-routing",
-    "axum-extra/typed-routing",
-    "aide-macros?/axum-extra-typed-routing",
+  "axum-extra-routing",
+  "axum-extra/typed-routing",
+  "aide-macros?/axum-extra-typed-routing",
 ]
 axum-extra-with-rejection = ["axum-extra", "axum-extra/with-rejection"]
 
